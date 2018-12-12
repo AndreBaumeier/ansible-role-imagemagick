@@ -1,5 +1,12 @@
 ---
 
+- name: Install ImageMagick dependencies (Debian)
+  apt:
+    name: ['pkg-config', 'libmagickwand-dev', 'libmagickcore-dev']
+    state: present
+  when: ansible_distribution == "Ubuntu"
+  become: true
+
 - name: Install ImageMagick (Debian)
   apt: pkg=imagemagick
   when: ansible_os_family == "Debian"
